@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fabio Stasiak — arquivo LedsLife</title>
-<meta name="description" content="Arquivo dos equipamentos que Fabio Stasiak construiu com luz entre 2007 e hoje: LEDs na Bateria Alcalina, luz negra e LASER no Teatro Oficina, a réplica da Time Machine em um DeLorean 1981, pesquisa com luz verde e infravermelho no DSIF/Unicamp, a Câmara Germicida Portátil por UV-C e a instalação robótica InstInt.">
+<meta name="description" content="Arquivo dos equipamentos que Fabio Stasiak construiu com luz entre 2007 e hoje: LEDs na Bateria Alcalina, o LEDspeaker, o LASER Boing no show Futurível com Gilberto Gil, luz negra e LASER no Teatro Oficina, a réplica da Time Machine em um DeLorean 1981, pesquisa com luz verde e infravermelho no DSIF/Unicamp, a Câmara Germicida Portátil por UV-C e a instalação robótica InstInt.">
 <link rel="canonical" href="https://ledslife.com.br/">
 
 <meta property="og:type" content="profile">
@@ -116,6 +116,14 @@ p{margin:0 0 1.1em}
 .entry-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
 .entry-tags li{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);
   border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:24px}
+.shots figure{margin:0}
+.shots a{display:block;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#0A0813;
+  transition:border-color .25s ease}
+.shots a:hover{border-color:var(--laser)}
+.shots img{width:100%;height:190px;object-fit:cover;display:block}
+.shots figcaption{font-family:var(--mono);font-size:10.5px;color:#6C6490;margin-top:8px;line-height:1.55}
+@media (max-width:720px){.shots img{height:165px}}
 .swatch{width:11px;height:11px;border-radius:2px;display:inline-block;vertical-align:-1px;margin-right:7px}
 
 /* NOTA */
@@ -142,6 +150,8 @@ p{margin:0 0 1.1em}
 .card span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--laser)}
 .card.is-study{border-left:3px solid var(--amber)}
 .card.is-study span{color:var(--amber)}
+.card.is-assoc{border-left:3px solid var(--uva)}
+.card.is-assoc span{color:var(--uva)}
 
 .aside{border-top:1px solid var(--line);padding-top:30px;margin-top:clamp(44px,7vh,72px);
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,5vw,56px)}
@@ -156,8 +166,11 @@ p{margin:0 0 1.1em}
   text-transform:uppercase;color:var(--mute);line-height:2}
 
 footer{margin-top:clamp(52px,8vh,88px);padding:28px 0 44px;border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
   font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:#6C6490}
+.footer-logo{width:172px;height:auto;opacity:.45;flex-shrink:0;transition:opacity .3s ease}
+footer:hover .footer-logo{opacity:.8}
+@media (max-width:720px){.footer-logo{width:140px}}
 footer a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line)}
 footer a:hover{color:var(--laser);border-color:var(--laser)}
 :focus-visible{outline:2px solid var(--laser);outline-offset:3px;border-radius:3px}
@@ -198,7 +211,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
   <h1>Quinze anos construindo equipamentos que dependem de <em>luz</em>.</h1>
 
   <p class="lede">
-    Instrumentos de percussão iluminados, luz negra e LASER de palco, uma réplica funcional
+    Instrumentos de percussão iluminados, holofotes sem fio, um LASER que desenha o som,
+    luz negra de palco, uma réplica funcional
     da Time Machine de <i>De Volta Para o Futuro</i>, pesquisa com luz verde e infravermelho
     no DSIF da Unicamp, uma câmara de desinfecção por ultravioleta testada durante a pandemia,
     uma instalação robótica de três metros e, hoje, um irrigador automático.
@@ -268,10 +282,10 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         shows da extinta Eletrogroove, de rock instrumental, groove e eletrônico. Boa parte do
         registro que ainda circula na web vem de gravações feitas pelo próprio público.
       </p>
-       <p>
-        A pré-história começou com o convite pra criar objetos de palco e iluminar o grupo "Alexei e a Banda Toda".
-        Depois também apareceram convites pra gravações com a "Banda de Argila" e outras bandas tudo isso no 
-        palco do famoso "Bar do Zé", em Barão Geraldo.
+      <p>
+        A pré-história começou com o convite para criar objetos de palco e iluminar o grupo
+        Alexei e a Banda Toda. Depois vieram gravações com a Banda de Argila e outras bandas,
+        tudo no palco do Bar do Zé, em Barão Geraldo.
       </p>
       <p>
         Foi aqui que entrou a luz negra, o ultravioleta em torno de 365 nm que não ilumina
@@ -279,7 +293,108 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         espectro em relação à câmara germicida — mesma família de radiação, efeito
         completamente diverso.
       </p>
-      <ul class="entry-tags"><li>Eletrogroove</li><li>UV-A · 365 nm</li><li>grupos de dança</li></ul>
+      <p>
+        O palco do Eletrogroove era comandado por uma mesa de luz que construí do zero e
+        batizamos de Black Pearl: madeira, potenciômetros, interruptores, LEDs indicadores e
+        muita solda. Por dentro parecia caos; por fora, fazia tudo funcionar.
+      </p>
+      <div class="shots">
+        <figure><a href="fotos/black-pearl-frente.jpg"><img src="fotos/black-pearl-frente.jpg" alt="Black Pearl em operação durante o show" loading="lazy"></a><figcaption>Black Pearl em operação durante o show</figcaption></figure>
+        <figure><a href="fotos/black-pearl-interior.jpg"><img src="fotos/black-pearl-interior.jpg" alt="Interior da Black Pearl — a fiação que ninguém via" loading="lazy"></a><figcaption>Interior da Black Pearl — a fiação que ninguém via</figcaption></figure>
+      </div>
+      <ul class="entry-tags"><li>Eletrogroove</li><li>Black Pearl</li><li>Bar do Zé</li><li>UV-A · 365 nm</li></ul>
+    </div>
+  </article>
+
+  <article class="entry reveal" id="ledspeaker">
+    <div class="entry-meta">
+      <span class="entry-nm"><span class="swatch" style="background:linear-gradient(90deg,#2C6BFF,#3FE0A0,#FF6B4A)"></span>450–630 nm</span>
+      <span class="entry-band">LED RGB reativo a som</span>
+      <span class="entry-year">2009</span>
+      <span class="tag-kind cena">produto</span>
+    </div>
+    <div>
+      <h3>LEDspeaker</h3>
+      <p>
+        Caixa de som luminosa criada em parceria com Gabriel Ferreira, que trabalhou comigo
+        até 2012. Registrada como modelo de utilidade.
+      </p>
+      <p>
+        O que a distingue não é ter LED, e sim onde a luz aparece: o corpo inteiro da caixa é
+        de plástico translúcido, iluminado por dentro com LEDs RGB que reagem ao som. A carcaça
+        deixa de ser invólucro e vira o próprio difusor. Como efeito colateral do arranjo, a
+        fiação interna projeta sombras sobre as paredes translúcidas, e esse desenho involuntário
+        se move junto com a música.
+      </p>
+      <p>
+        A produção parou em cerca de catorze unidades. O registro seguiu, o produto não.
+      </p>
+      <div class="shots">
+        <figure><a href="fotos/ledspeaker.jpg"><img src="fotos/ledspeaker.jpg" alt="Quatro unidades acesas — o corpo inteiro difunde a luz" loading="lazy"></a><figcaption>Quatro unidades acesas — o corpo inteiro difunde a luz</figcaption></figure>
+        <figure><a href="fotos/ledspeaker-primeiros.jpg"><img src="fotos/ledspeaker-primeiros.jpg" alt="Os dois primeiros pares construídos" loading="lazy"></a><figcaption>Os dois primeiros pares construídos</figcaption></figure>
+      </div>
+      <ul class="entry-tags"><li>Gabriel Ferreira</li><li>modelo de utilidade</li><li>difusão pelo corpo</li></ul>
+    </div>
+  </article>
+
+  <article class="entry reveal" id="grupo-do-trecho">
+    <div class="entry-meta">
+      <span class="entry-nm"><span class="swatch" style="background:linear-gradient(90deg,#2C6BFF,#EDE9F5,#FF6B4A)"></span>450–630 nm</span>
+      <span class="entry-band">LED RGB e branco · sem fio</span>
+      <span class="entry-year">2009</span>
+      <span class="tag-kind cena">cena</span>
+    </div>
+    <div>
+      <h3>Holofotes sem fio para o Grupo do Trecho</h3>
+      <p>
+        Primeiro grupo de teatro a receber equipamento meu. Construí holofotes portáteis de
+        alta potência com LEDs RGB e brancos, controle remoto e alimentação por bateria LiPo
+        de drone — na prática, luz de palco que não depende de tomada nem de cabo.
+      </p>
+      <p>
+        Isso muda o que a direção pode pedir. O refletor deixa de ser um ponto fixo na grade e
+        passa a ser objeto de cena: o ator carrega, aponta, caminha com ele rua afora. A
+        apresentação do grupo rendeu um Prêmio Revelação em 2009.
+      </p>
+      <div class="shots">
+        <figure><a href="fotos/grupo-do-trecho.jpg"><img src="fotos/grupo-do-trecho.jpg" alt="O Grupo do Trecho com os holofotes em cena, julho de 2009" loading="lazy"></a><figcaption>O Grupo do Trecho com os holofotes em cena, julho de 2009</figcaption></figure>
+        <figure><a href="fotos/holofotes-rgb.jpg"><img src="fotos/holofotes-rgb.jpg" alt="Os holofotes montados: RGB e brancos, prontos para entrega" loading="lazy"></a><figcaption>Os holofotes montados: RGB e brancos, prontos para entrega</figcaption></figure>
+      </div>
+      <ul class="entry-tags"><li>Grupo do Trecho</li><li>bateria LiPo</li><li>Prêmio Revelação 2009</li></ul>
+    </div>
+  </article>
+
+  <article class="entry reveal" id="laser-boing">
+    <div class="entry-meta">
+      <span class="entry-nm" style="color:var(--laser)"><span class="swatch" style="background:#3FE0A0"></span>532 nm</span>
+      <span class="entry-band">LASER verde + membrana acústica</span>
+      <span class="entry-year">2010</span>
+      <span class="tag-kind cena">cena</span>
+    </div>
+    <div>
+      <h3>LASER Boing</h3>
+      <p>
+        Um feixe de LASER verde incide sobre um espelho muito fino e leve, colado a uma membrana
+        flexível. A membrana vibra com a onda sonora do instrumento, o espelho inclina junto e o
+        feixe refletido desenha no ar uma figura que responde ao som — parente próxima das curvas
+        de Lissajous, do físico que descreveu a composição de dois movimentos oscilatórios
+        perpendiculares.
+      </p>
+      <p>
+        O que torna isso diferente de um projetor sincronizado por software é que não há
+        sincronização nenhuma: o desenho <em>é</em> o som, por via mecânica direta. A guitarra
+        move o espelho.
+      </p>
+      <p>
+        Estreou no Futurível, no Auditório Ibirapuera, em novembro de 2010 — espetáculo com
+        Gilberto Gil e vários outros artistas. Na foto, Bruno Kayapy, do Macaco Bong, tocando
+        dentro do feixe gerado pela própria guitarra.
+      </p>
+      <div class="shots">
+        <figure><a href="fotos/laser-boing-palco.jpg"><img src="fotos/laser-boing-palco.jpg" alt="Bruno Kayapy no Futurível, banhado pelo feixe que sua guitarra desenhava" loading="lazy"></a><figcaption>Bruno Kayapy no Futurível, banhado pelo feixe que sua guitarra desenhava</figcaption></figure>
+        <figure><a href="fotos/laser-boing-aparato.jpg"><img src="fotos/laser-boing-aparato.jpg" alt="O aparato do LASER Boing, com a marca LedsLife na lateral" loading="lazy"></a><figcaption>O aparato do LASER Boing, com a marca LedsLife na lateral</figcaption></figure>
+      </div>
+      <ul class="entry-tags"><li>Futurível</li><li>Auditório Ibirapuera</li><li>curvas de Lissajous</li><li>Macaco Bong</li></ul>
     </div>
   </article>
 
@@ -295,7 +410,7 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <p>
         O problema de partida: desinfetar efluente hospitalar com ultravioleta é ineficiente
         porque o UV tem transmitância baixa em meio aquoso — ele é absorvido nos primeiros
-        milímetros e não alcança o volume. A hipótese, orientada pelo professor Vitor
+        milímetros e não alcança o volume. A hipótese, orientada pelo Professor Vitor
         Baranauskas no DSIF, era contornar isso pelo comprimento de onda.
       </p>
       <p>
@@ -309,7 +424,7 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Não foi observado efeito nocivo, em nenhum dos tempos de exposição testados. A absorção
         a dois fótons exige densidade instantânea de fótons muito acima do que uma fonte
         incoerente entrega, por mais potente que seja. O resultado foi negativo e está registrado
-        como tal. A parte microbiológica contou com a professora Elisabeth Pelosi, então
+        como tal. A parte microbiológica contou com a Professora Elisabeth Pelosi, então
         responsável pelo departamento de microbiologia da FATEC de Sorocaba.
       </p>
       <ul class="entry-tags"><li>absorção a dois fótons</li><li>efluentes hospitalares</li><li>FATEC Sorocaba</li></ul>
@@ -328,8 +443,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <p>
         Protótipo de equipamento para aplicação de luz no infravermelho e infravermelho próximo
         em pesquisa de combate ao câncer, sobre células tumorais em metástase associadas a
-        nanotubos de carbono. Os nanotubos eram produzidos pelo próprio professor Vitor
-        Baranauskas no DSIF e fornecidos à professora Elaine Oliveira, da Unicamp e da FATEC
+        nanotubos de carbono. Os nanotubos eram produzidos pelo próprio Professor Vitor
+        Baranauskas no DSIF e fornecidos à Professora Elaine Oliveira, da Unicamp e da FATEC
         de Sorocaba.
       </p>
       <p>
@@ -404,7 +519,7 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
 
   <article class="entry reveal">
     <div class="entry-meta">
-      <span class="entry-nm"><span class="swatch" style="background:linear-gradient(90deg,#FFB03A,#FF6B4A)"></span>2700–3000 K</span>
+      <span class="entry-nm"><span class="swatch" style="background:linear-gradient(90deg,#2C6BFF,#FF6B4A)"></span>450–630 nm</span>
       <span class="entry-band">LEDs digitais</span>
       <span class="entry-year">2018</span>
       <span class="tag-kind cena">produto</span>
@@ -431,9 +546,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <p>
         Equipamento de desinfecção de objetos por ultravioleta germicida, construído nas
         primeiras semanas da pandemia. Fui o primeiro a chegar com um protótipo para teste no
-        Laboratório de Virologia Animal da professora Clarice Arns, um dos poucos pontos da
+        Laboratório de Virologia Animal da Professora Clarice Arns, um dos poucos pontos da
         Unicamp que seguiu aberto durante o <i>lockdown</i>, justamente por estar estudando
-        formas de enfrentar a Covid-19. A professora e suas colaboradoras conduziram os testes.
+        formas de enfrentar a Covid-19. A Professora e suas colaboradoras conduziram os testes.
       </p>
       <p>
         Depois disso passei a ser chamado com frequência para avaliar tecnicamente soluções de
@@ -461,8 +576,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
     <div>
       <h3>InstInt — instalação robótica de três metros</h3>
       <p>
-        Convite da professora Maria Cecília Calani Baranauskas, do Instituto de Computação da
-        Unicamp, que me conhecia através do professor Vitor, seu marido. A partir de uma maquete
+        Convite da Professora Maria Cecília Calani Baranauskas, do Instituto de Computação da
+        Unicamp, que me conhecia através do Professor Vitor, seu marido. A partir de uma maquete
         feita por alunos de pós-graduação, construí o equipamento em escala humana: três metros
         de altura, forma pouco convencional — algo entre cogumelo e água-viva — com movimento de
         rotação, luzes, som, projeção e sensores.
@@ -474,6 +589,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Unicamp. Nas publicações acadêmicas do projeto, a LedsLife aparece creditada na
         construção.
       </p>
+      <div class="shots">
+        <figure><a href="fotos/instint.jpg"><img src="fotos/instint.jpg" alt="O InstInt em operação no Museu Exploratório de Ciências" loading="lazy"></a><figcaption>O InstInt em operação no Museu Exploratório de Ciências</figcaption></figure>
+      </div>
       <ul class="entry-tags"><li>IC · Unicamp</li><li>FAPESP</li><li>Museu Exploratório de Ciências</li></ul>
     </div>
   </article>
@@ -532,7 +650,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Irrigação automática com sensor de chuva embutido, que interrompe o ciclo em dias chuvosos
         e economiza água. Engates rápidos para instalação sem ferramenta, carcaça de alumínio e
         vidro resistente a sol e chuva, e LEDs indicando o estado do aparelho. É o projeto em que
-        estou mais engajado hoje.
+        estou mais engajado hoje. O vídeo de apresentação tem <i>Mullets</i>, da banda Macaco Bong,
+        usada com autorização.
       </p>
       <span>aguatudo.com.br →</span>
     </a>
@@ -541,7 +660,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <h3>Luminária Urutau</h3>
       <p>
         A luminária apresentada na Expolux 2018 continua existindo como produto, pronta para quem
-        quiser conhecer o projeto de perto.
+        quiser conhecer o projeto de perto. O vídeo tem <i>Berimbau Blues</i>, de Dinho Nascimento,
+        cedida pelo próprio artista.
       </p>
       <span>luminariaurutau.com.br →</span>
     </a>
@@ -549,11 +669,23 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
     <div class="card is-study reveal">
       <h3>Mestrado em andamento</h3>
       <p>
-        Matriculado na
-        FEEC/Unicamp, concluindo a dissertação sobre o uso de UV-C na desinfecção de objetos,
-        a partir da Câmara Germicida Portátil.
+        Matriculado na FEEC/Unicamp, sob orientação do Professor Luiz Carlos Kretly, concluindo
+        a dissertação sobre o uso de UV-C na desinfecção de objetos, a partir da Câmara
+        Germicida Portátil.
       </p>
       <span>FEEC · Unicamp</span>
+    </div>
+
+    <div class="card is-assoc reveal">
+      <h3>Abinfo e Latin Display</h3>
+      <p>
+        Desde 2015 faço parte da Associação Brasileira de Informática, em Campinas, mantida
+        pela Professora Alaíde Pellegrini Mammana e pelo Professor Carlos Mammana. A Professora
+        Alaíde dirige o capítulo latino-americano da Society for Information Display e coordena
+        o Latin Display, maior evento de tecnologia de mostradores da América Latina — onde
+        participei algumas vezes como palestrante, representando a LedsLife.
+      </p>
+      <span>desde 2015</span>
     </div>
   </div>
 
@@ -580,9 +712,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
 
 <section class="tribute reveal">
   <p>
-    Nada disso teria existido sem o professor Vitor Baranauskas, que me orientou no DSIF e me
+    Nada disso teria existido sem o Professor Vitor Baranauskas, que me orientou no DSIF e me
     ensinou o que eu precisaria saber sobre ultravioleta muitos anos antes de eu descobrir para
-    que serviria. E sem a professora Elisabeth Pelosi, que abriu o laboratório de microbiologia
+    que serviria. E sem a Professora Elisabeth Pelosi, que abriu o laboratório de microbiologia
     da FATEC quando eu tinha só uma hipótese e nenhum resultado.
   </p>
   <small>
@@ -592,6 +724,7 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
 </section>
 
 <footer>
+  <img src="ledslife-logo.png" alt="LedsLife" class="footer-logo">
   <span>Fabio Stasiak · arquivo LedsLife · Campinas, SP</span>
   <span><a href="#arquivo">voltar ao topo</a></span>
 </footer>
