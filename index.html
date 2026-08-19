@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LedsLife — quinze anos construindo com luz</title>
+<meta name="description" content="Arquivo de projetos construídos com luz entre 2008 e hoje: efeitos com LED e LASER para bandas e teatro, a réplica da Time Machine em um DeLorean 1981, a Luminária Urutau, a Câmara Germicida Portátil testada na Unicamp durante a pandemia e o irrigador automático Aguatudo.">
+<link rel="canonical" href="https://ledslife.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://ledslife.com.br/">
+<meta property="og:title" content="LedsLife — quinze anos construindo com luz">
+<meta property="og:description" content="De efeitos de palco a desinfecção por UV-C: o arquivo dos equipamentos que construí entre 2008 e hoje.">
+<meta property="og:image" content="https://ledslife.com.br/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#0D0A16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "SEU NOME AQUI",
+  "url": "https://ledslife.com.br/",
+  "jobTitle": "Engenheiro e construtor de equipamentos",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidade Estadual de Campinas (Unicamp)"
+  },
+  "knowsAbout": ["Radiação ultravioleta germicida", "UVGI", "Iluminação com LED", "Instrumentação eletrônica", "Efeitos especiais cênicos"],
+  "sameAs": [
+    "https://www.aguatudo.com.br",
+    "https://www.luminariaurutau.com.br"
+  ]
+}
+</script>
+
+<style>
+:root{
+  --void:#0D0A16;
+  --panel:#171232;
+  --panel-2:#1E1840;
+  --line:#2E2757;
+
+  --uvc:#7B5CFF;
+  --laser:#3FE0A0;
+  --amber:#FFB03A;
+  --rose:#FF6B8A;
+
+  --paper:#EDE9F5;
+  --mute:#9A93B8;
+
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --gut:clamp(20px,5vw,64px);
+  --max:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background:
+    radial-gradient(60vw 50vh at 12% -8%, rgba(123,92,255,.20), transparent 65%),
+    radial-gradient(45vw 40vh at 92% 8%, rgba(63,224,160,.08), transparent 65%);
+  pointer-events:none; z-index:0;
+}
+.wrap{position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 var(--gut)}
+
+a{color:inherit}
+h1,h2,h3{font-family:var(--display); font-weight:800; line-height:1.02; letter-spacing:-.025em; margin:0}
+p{margin:0 0 1.1em}
+
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--mute); margin:0 0 18px;
+}
+
+/* ---------- HERO ---------- */
+.hero{padding:clamp(56px,11vh,120px) 0 clamp(40px,7vh,72px)}
+.brandline{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--mute); margin-bottom:clamp(28px,6vh,56px);
+}
+.brandline b{color:var(--paper); font-weight:500; letter-spacing:.18em}
+.brandline s{color:#6C6490; text-decoration-color:var(--uvc)}
+
+.hero h1{font-size:clamp(40px,7.6vw,88px); max-width:16ch}
+.hero h1 em{font-style:normal; color:var(--uvc)}
+.hero .lede{
+  margin-top:26px; max-width:60ch; font-size:clamp(17px,2vw,19.5px); color:#CFC9E4;
+}
+
+/* ---------- ESPECTRO ---------- */
+.spectrum{margin:clamp(44px,8vh,84px) 0 0}
+.spectrum-band{
+  position:relative; height:74px; border-radius:5px; overflow:hidden;
+  border:1px solid var(--line); background:#0A0813;
+}
+.spectrum-fill{
+  position:absolute; inset:0;
+  background:linear-gradient(90deg,
+    #0F0C1C 0%,
+    #3B2A8F 10.4%,
+    #1A1533 20%,
+    #2A1B5E 34.6%,
+    #6B3FD6 38%,
+    #2C4EFF 45%,
+    #2C6BFF 51%,
+    #22D3EE 58%,
+    #3FE0A0 63.8%,
+    #C6E44A 70%,
+    #FFB03A 76%,
+    #FF6B4A 80.8%,
+    #C7263C 88%,
+    #4A0E1C 96.2%,
+    #140A12 100%);
+  transform-origin:left center;
+}
+.spectrum-visible{
+  position:absolute; top:0; bottom:0; left:34.6%; right:3.8%;
+  border-left:1px solid rgba(237,233,245,.45);
+  border-right:1px solid rgba(237,233,245,.45);
+}
+.spectrum-visible span{
+  position:absolute; top:8px; left:10px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:rgba(255,255,255,.85);
+  text-shadow:0 1px 3px rgba(0,0,0,.6);
+}
+.mark{position:absolute; top:-1px; bottom:-1px; width:2px; background:var(--paper)}
+.mark::after{
+  content:attr(data-label);
+  position:absolute; top:calc(100% + 9px); left:0;
+  font-family:var(--mono); font-size:11px; letter-spacing:.04em;
+  color:var(--mute); white-space:nowrap;
+}
+.mark.is-uvc{background:var(--uvc); box-shadow:0 0 16px 2px rgba(123,92,255,.75)}
+.mark.is-uvc::after{color:var(--uvc)}
+.mark.flip::after{left:auto; right:0}
+.spectrum-axis{
+  display:flex; justify-content:space-between;
+  font-family:var(--mono); font-size:11px; color:#6C6490;
+  margin-top:46px; padding-top:12px; border-top:1px solid var(--line);
+}
+
+/* ---------- SEÇÕES ---------- */
+.sec{padding:clamp(64px,11vh,120px) 0}
+.sec-head{max-width:62ch; margin-bottom:clamp(34px,6vh,56px)}
+.sec-head h2{font-size:clamp(27px,4vw,44px)}
+.sec-head p{margin-top:16px; color:#CFC9E4}
+
+/* ---------- LINHA DO TEMPO ---------- */
+.entry{
+  display:grid; grid-template-columns:150px 1fr; gap:clamp(18px,4vw,52px);
+  padding:34px 0; border-top:1px solid var(--line);
+}
+.entry:last-child{border-bottom:1px solid var(--line)}
+.entry-meta{font-family:var(--mono); font-size:12.5px; line-height:1.55}
+.entry-nm{display:block; font-size:19px; color:var(--paper); letter-spacing:-.01em}
+.entry-band{display:block; color:var(--mute); margin:2px 0 12px}
+.entry-year{display:block; color:#6C6490; letter-spacing:.08em}
+.entry h3{font-size:clamp(21px,2.7vw,29px); margin-bottom:12px}
+.entry p{color:#CFC9E4; max-width:64ch; margin-bottom:0}
+.entry p + p{margin-top:.9em}
+.entry-tags{
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; padding:0; list-style:none;
+}
+.entry-tags li{
+  font-family:var(--mono); font-size:11px; letter-spacing:.06em;
+  color:var(--mute); border:1px solid var(--line); border-radius:999px; padding:4px 11px;
+}
+.swatch{width:11px; height:11px; border-radius:2px; display:inline-block; vertical-align:-1px; margin-right:7px}
+
+/* ---------- NOTA TÉCNICA ---------- */
+.note{
+  border:1px solid var(--line); border-radius:8px; background:var(--panel);
+  padding:clamp(26px,4vw,44px);
+  border-left:3px solid var(--uvc);
+}
+.note h2{font-size:clamp(23px,3.2vw,34px); margin-bottom:18px}
+.note p{color:#CFC9E4; max-width:70ch}
+.note p:last-child{margin-bottom:0}
+.note strong{color:var(--paper); font-weight:500}
+.figures{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:1px; background:var(--line); border:1px solid var(--line);
+  border-radius:6px; overflow:hidden; margin:30px 0;
+}
+.fig{background:var(--panel-2); padding:20px 22px}
+.fig dt{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin-bottom:9px}
+.fig dd{margin:0; font-family:var(--display); font-size:29px; font-weight:700; letter-spacing:-.02em}
+.fig dd small{display:block; font-family:var(--body); font-size:13px; font-weight:400; color:var(--mute); letter-spacing:0; margin-top:5px}
+
+/* ---------- AGORA ---------- */
+.now{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:18px}
+.card{
+  display:block; text-decoration:none;
+  border:1px solid var(--line); border-radius:8px; background:var(--panel);
+  padding:clamp(24px,3vw,34px);
+  transition:border-color .25s ease, transform .25s ease, background .25s ease;
+}
+.card:hover,.card:focus-visible{border-color:var(--laser); transform:translateY(-3px); background:var(--panel-2)}
+.card h3{font-size:24px; margin-bottom:10px}
+.card p{color:#CFC9E4; font-size:15.5px; margin-bottom:16px}
+.card span{font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--laser)}
+.card.is-study{border-left:3px solid var(--amber)}
+.card.is-study span{color:var(--amber)}
+
+/* ---------- DESAMBIGUAÇÃO + DEDICATÓRIA ---------- */
+.aside{
+  border-top:1px solid var(--line); padding-top:30px; margin-top:clamp(48px,8vh,80px);
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(24px,5vw,56px);
+}
+.aside h3{font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--mute); margin-bottom:12px}
+.aside p{font-size:15px; color:#B6AFD0; max-width:52ch; margin-bottom:0}
+
+.tribute{
+  padding:clamp(52px,9vh,96px) 0 0;
+  text-align:center;
+}
+.tribute p{
+  font-family:var(--display); font-weight:500;
+  font-size:clamp(18px,2.4vw,25px); line-height:1.4; letter-spacing:-.015em;
+  max-width:34ch; margin:0 auto 14px; color:var(--paper);
+}
+.tribute small{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+
+footer{
+  margin-top:clamp(56px,9vh,96px); padding:28px 0 44px;
+  border-top:1px solid var(--line);
+  display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; color:#6C6490;
+}
+footer a{color:var(--mute); text-decoration:none; border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--laser); border-color:var(--laser)}
+
+:focus-visible{outline:2px solid var(--laser); outline-offset:3px; border-radius:3px}
+
+/* ---------- MOTION ---------- */
+.js .reveal{opacity:0; transform:translateY(18px)}
+.js .reveal.in{opacity:1; transform:none; transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1)}
+@keyframes sweep{from{transform:scaleX(0)} to{transform:scaleX(1)}}
+@keyframes fadein{from{opacity:0} to{opacity:1}}
+.js .spectrum-fill{animation:sweep 1.25s cubic-bezier(.25,.9,.3,1) .15s both}
+.js .spectrum-visible,.js .mark{animation:fadein .6s ease 1.3s both}
+.js .mark.is-uvc{animation:fadein .7s ease 1.75s both}
+
+@media (max-width:720px){
+  body{font-size:16px}
+  .entry{grid-template-columns:1fr; gap:14px; padding:28px 0}
+  .entry-band{margin-bottom:0}
+  .entry-meta{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .entry-nm,.entry-band,.entry-year{display:inline}
+  .spectrum-band{height:56px}
+  .mark::after{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important; transition:none!important}
+  .js .reveal{opacity:1; transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="brandline">
+    <b>LedsLife</b>
+    <span>arquivo · 2008 — 2023</span>
+    <s>encerrado</s>
+  </div>
+
+  <h1>Quinze anos construindo equipamentos que dependem de <em>luz</em>.</h1>
+
+  <p class="lede">
+    Efeitos de palco para bandas e teatro, uma réplica funcional da Time Machine
+    de <i>De Volta Para o Futuro</i>, uma luminária, uma câmara de desinfecção por
+    ultravioleta testada na Unicamp durante a pandemia e, hoje, um irrigador
+    automático. Esta página é o arquivo desse percurso — mantido no ar porque
+    boa parte dele ainda é citada, e porque o nome LedsLife gerou uma confusão
+    técnica que vale corrigir por escrito.
+  </p>
+
+  <!-- ============ ESPECTRO: elemento-assinatura ============ -->
+  <div class="spectrum" aria-hidden="true">
+    <div class="spectrum-band">
+      <div class="spectrum-fill"></div>
+      <div class="spectrum-visible"><span>faixa visível</span></div>
+      <div class="mark is-uvc" style="left:10.4%" data-label="254 nm · UV-C"></div>
+      <div class="mark" style="left:51%" data-label="465 nm"></div>
+      <div class="mark" style="left:63.8%" data-label="532 nm"></div>
+      <div class="mark flip" style="left:80.8%" data-label="620 nm"></div>
+    </div>
+    <div class="spectrum-axis"><span>200 nm</span><span>faixa visível: 380 — 700 nm</span><span>720 nm</span></div>
+  </div>
+</header>
+
+<!-- ============ LINHA DO TEMPO ============ -->
+<section class="sec" id="arquivo">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Arquivo</p>
+    <h2>Cada projeto, pelo comprimento de onda que ele usa.</h2>
+    <p>
+      A ordem é cronológica. O número à esquerda é a faixa do espectro em que o
+      equipamento efetivamente opera — é o que separa um refletor de palco de uma
+      câmara germicida, e é a informação que mais se perdeu quando esses trabalhos
+      foram descritos por terceiros.
+    </p>
+  </div>
+
+  <article class="entry reveal">
+    <div class="entry-meta">
+      <span class="entry-nm"><span class="swatch" style="background:linear-gradient(90deg,#2C6BFF,#FF6B4A)"></span>450–630 nm</span>
+      <span class="entry-band">LED visível</span>
+      <span class="entry-year">2008 — 2012</span>
+    </div>
+    <div>
+      <h3>Efeitos com LED para a cena musical</h3>
+      <p>
+        Equipamentos de efeito construídos sob medida para bandas, grupos de dança
+        e artistas — com destaque para os shows da extinta Eletrogroove, de rock
+        instrumental, groove e eletrônico. Boa parte do registro que ainda circula
+        na web vem de gravações feitas pelo próprio público nesses shows.
+      </p>
+      <p>
+        No mesmo período atendi demandas de pesquisa, entre elas o Departamento de
+        Genômica e Proteômica do Instituto de Biologia da Unicamp, que precisava de
+        instrumentação com LEDs para uso em laboratório.
+      </p>
+      <ul class="entry-tags">
+        <li>Eletrogroove</li><li>instrumentação para pesquisa</li><li>Unicamp / IB</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="entry reveal">
+    <div class="entry-meta">
+      <span class="entry-nm"><span class="swatch" style="background:#3FE0A0"></span>532 nm</span>
+      <span class="entry-band">LASER + LED</span>
+      <span class="entry-year">2012 — 2015</span>
+    </div>
+    <div>
+      <h3>Teatro Oficina</h3>
+      <p>
+        Convite para construir os equipamentos de efeitos especiais com LED e LASER
+        das montagens do Teatro Oficina, de Zé Celso Martinez Corrêa, em São Paulo.
+        Três anos operando em um espaço onde a luz não ilumina a cena — ela é parte
+        da cena, e precisa aguentar temporada inteira sem falhar.
+      </p>
+      <ul class="entry-tags">
+        <li>São Paulo</li><li>LASER cênico</li><li>operação em temporada</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="entry reveal" id="delorean">
+    <div class="entry-meta">
+      <span class="entry-nm"><span class="swatch" style="background:#FFB03A"></span>Espectro pleno</span>
+      <span class="entry-band">réplica funcional</span>
+      <span class="entry-year">2015 — 2016</span>
+    </div>
+    <div>
+      <h3>Time Machine — DeLorean 1981</h3>
+      <p>
+        Réplica completa da máquina do tempo de <i>De Volta Para o Futuro</i>,
+        construída sobre um DeLorean DMC-12 de 1981. Foi o trabalho mais exigente
+        do período: milhares de peças, referência visual conhecida de cor por
+        qualquer pessoa que viu o filme e nenhuma margem para aproximação.
+      </p>
+      <p>
+        O carro apareceu na Rede Globo, na Rede Record e em produções do canal Porta
+        dos Fundos. Hoje pertence ao Museu do Carro Antigo de São Roque, em São Paulo,
+        vendido por mais de um milhão de reais.
+      </p>
+      <ul class="entry-tags">
+        <li>DMC-12</li><li>Museu do Carro Antigo</li><li>São Roque · SP</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="entry reveal">
+    <div class="entry-meta">
+      <span class="entry-nm"><span class="swatch" style="background:linear-gradient(90deg,#FFB03A,#FF6B4A)"></span>2700–3000 K</span>
+      <span class="entry-band">LED branco quente</span>
+      <span class="entry-year">2018</span>
+    </div>
+    <div>
+      <h3>Luminária Urutau</h3>
+      <p>
+        Primeiro produto próprio, saindo do trabalho sob encomenda para algo
+        reproduzível. Apresentada em estande próprio na Expolux 2018, em São Paulo.
+        O projeto existe e está pronto — nunca recebeu o impulsionamento comercial
+        que precisaria.
+      </p>
+      <ul class="entry-tags">
+        <li>Expolux 2018</li><li>produto próprio</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="entry reveal" id="camara-germicida">
+    <div class="entry-meta">
+      <span class="entry-nm" style="color:var(--uvc)"><span class="swatch" style="background:#7B5CFF"></span>253,7 nm</span>
+      <span class="entry-band">UV-C · vapor de mercúrio</span>
+      <span class="entry-year">2020 — 2021</span>
+    </div>
+    <div>
+      <h3>Câmara Germicida Portátil</h3>
+      <p>
+        Equipamento de desinfecção de objetos por ultravioleta germicida, construído
+        nas primeiras semanas da pandemia. Fui o primeiro a chegar com um protótipo
+        para teste no Laboratório de Virologia Animal da professora Clarice Arns, um
+        dos poucos pontos da Unicamp que seguiu aberto durante o <i>lockdown</i>,
+        justamente por estar estudando formas de enfrentar a Covid-19. A professora e
+        suas colaboradoras conduziram os testes.
+      </p>
+      <p>
+        A partir daí passei a ser chamado com frequência para avaliar tecnicamente
+        outras soluções de UVGI que chegavam à universidade vindas de empresas. Fiz
+        isso sem cobrar, por entender que era hora de contribuir. Houve duas
+        consultorias remuneradas: o <i>retrofit</i> de um equipamento de ar
+        condicionado hospitalar para a EGEAR, em São Paulo, e uma avaliação geral
+        sobre uso de UVGI para a presidência das Faculdades São Leopoldo Mandic.
+      </p>
+      <p>
+        A câmara nunca foi comercializada em escala. É o objeto da dissertação de
+        mestrado que estou concluindo agora.
+      </p>
+      <ul class="entry-tags">
+        <li>LAV · Unicamp</li><li>UVGI</li><li>EGEAR</li><li>São Leopoldo Mandic</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- ============ NOTA TÉCNICA ============ -->
+<section class="sec" id="led-e-uvc">
+  <div class="note reveal">
+    <p class="eyebrow">Nota técnica</p>
+    <h2>A Câmara Germicida não usa LED.</h2>
+    <p>
+      Vale registrar isso de forma explícita, porque o nome LedsLife levou algumas
+      pessoas a supor o contrário na época — uma suposição que nunca partiu de mim.
+    </p>
+
+    <dl class="figures">
+      <div class="fig">
+        <dt>Fonte utilizada</dt>
+        <dd>Hg<small>Lâmpada de vapor de mercúrio a baixa pressão</small></dd>
+      </div>
+      <div class="fig">
+        <dt>Emissão principal</dt>
+        <dd style="color:var(--uvc)">253,7 nm<small>Linha ressonante do mercúrio, dentro da faixa UV-C</small></dd>
+      </div>
+      <div class="fig">
+        <dt>Pico germicida do DNA</dt>
+        <dd>≈ 265 nm<small>Absorção máxima de ácidos nucleicos</small></dd>
+      </div>
+    </dl>
+
+    <p>
+      A emissão em <strong>253,7 nm</strong> cai muito perto do pico de absorção do
+      DNA e do RNA, e é isso que dá à lâmpada de vapor de mercúrio sua eficiência
+      germicida — ela desorganiza o material genético do microrganismo, impedindo
+      que ele se replique. Existem LEDs UV-C, mas em 2020 eles não entregavam a
+      potência radiante por real investido que a aplicação exigia. A escolha pela
+      lâmpada foi técnica, não de conveniência.
+    </p>
+    <p>
+      Voltando ao espectro no topo desta página: <strong>253,7 nm fica fora da faixa
+      visível</strong>, à esquerda de tudo que o olho enxerga. Todo o resto deste
+      arquivo — LEDs de palco, LASER, luminária — vive dentro dela. É a mesma
+      oficina, mas não é a mesma física.
+    </p>
+  </div>
+</section>
+
+<!-- ============ AGORA ============ -->
+<section class="sec" id="agora">
+  <div class="sec-head reveal">
+    <p class="eyebrow">Onde estou agora</p>
+    <h2>O arquivo termina aqui. O trabalho, não.</h2>
+    <p>
+      A marca LedsLife foi aposentada. Os projetos em andamento seguem cada um com
+      seu próprio nome e seu próprio endereço.
+    </p>
+  </div>
+
+  <div class="now">
+    <a class="card reveal" href="https://www.aguatudo.com.br">
+      <h3>Aguatudo</h3>
+      <p>
+        Irrigação automática com sensor de chuva embutido, que interrompe o ciclo em
+        dias chuvosos e economiza água. Engates rápidos para instalação sem
+        ferramenta, carcaça de alumínio e vidro resistente a sol e chuva, e LEDs
+        indicando o estado do aparelho. É o projeto em que estou mais engajado hoje.
+      </p>
+      <span>aguatudo.com.br →</span>
+    </a>
+
+    <a class="card reveal" href="https://www.luminariaurutau.com.br">
+      <h3>Luminária Urutau</h3>
+      <p>
+        A luminária apresentada na Expolux 2018 continua existindo como produto,
+        pronta para quem quiser conhecer o projeto de perto.
+      </p>
+      <span>luminariaurutau.com.br →</span>
+    </a>
+
+    <div class="card is-study reveal">
+      <h3>Mestrado em andamento</h3>
+      <p>
+        Estou matriculado no DSIF — Departamento de Semicondutores, Instrumentação e
+        Fotônica da FEEC/Unicamp, concluindo a dissertação sobre o uso de UV-C na
+        desinfecção de objetos, a partir da Câmara Germicida Portátil.
+      </p>
+      <span>FEEC · Unicamp</span>
+    </div>
+  </div>
+
+  <div class="aside">
+    <div class="reveal">
+      <h3>Sobre o nome</h3>
+      <p>
+        Existe um grupo artístico homônimo no México, sem qualquer relação com este
+        trabalho. A marca LedsLife foi registrada por mim no Brasil nas classes 42 e
+        na correspondente a equipamentos, e está sendo aposentada por escolha própria.
+      </p>
+    </div>
+    <div class="reveal">
+      <h3>Contato</h3>
+      <p>
+        Para assuntos de irrigação, escreva pelo site do Aguatudo. Para consultoria em
+        UVGI e desinfecção por ultravioleta, ou para qualquer coisa relacionada aos
+        projetos deste arquivo:
+        <a href="mailto:SEU@EMAIL.COM" style="color:var(--laser)">SEU@EMAIL.COM</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEDICATÓRIA ============ -->
+<section class="tribute reveal">
+  <p>
+    Nada disso teria existido sem o professor Vitor Baranauskas, que me orientou no
+    DSIF e me ensinou o que eu precisaria saber sobre ultravioleta muitos anos antes
+    de eu descobrir para que serviria.
+  </p>
+  <small>Vitor Baranauskas · 1955 — 2014</small>
+</section>
+
+<footer>
+  <span>LedsLife · arquivo · Campinas, SP</span>
+  <span><a href="#arquivo">voltar ao topo</a></span>
+</footer>
+
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){ e.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{ rootMargin:'0px 0px -12% 0px', threshold:0.05 });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
