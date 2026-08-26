@@ -116,6 +116,27 @@ p{margin:0 0 1.1em}
 .entry-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
 .entry-tags li{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);
   border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.entry details{border:0;padding:0;margin:0}
+.entry details > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);
+  margin-top:14px;transition:color .25s ease}
+.entry details > summary::-webkit-details-marker{display:none}
+.entry details > summary::before{content:"+";display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border:1px solid var(--line);border-radius:50%;font-size:13px;line-height:1;
+  transition:border-color .25s ease,background .25s ease,color .25s ease}
+.entry details[open] > summary::before{content:"–"}
+.entry details > summary:hover{color:var(--laser)}
+.entry details > summary:hover::before{border-color:var(--laser);color:var(--laser)}
+.entry details[open] > summary{margin-bottom:16px}
+.entry details[open] > summary::before{background:var(--panel)}
+.entry details > *:not(summary){animation:unfold .45s ease both}
+@keyframes unfold{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.expandall{display:inline-flex;align-items:center;gap:8px;margin-top:18px;cursor:pointer;
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);
+  background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;
+  transition:border-color .25s ease,color .25s ease}
+.expandall:hover{border-color:var(--laser);color:var(--laser)}
+@media (prefers-reduced-motion:reduce){.entry details > *:not(summary){animation:none}}
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:24px}
 .shots figure{margin:0}
 .shots a{display:block;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#0A0813;
@@ -277,6 +298,7 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       estão marcados, e a alternância entre eles não é acaso: é o mesmo conjunto de ferramentas
       resolvendo problemas de naturezas diferentes.
     </p>
+    <button class="expandall" type="button" id="expandall" aria-expanded="false">Expandir todos os projetos</button>
   </div>
 
   <article class="entry reveal" id="bateria-alcalina">
@@ -294,11 +316,15 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         instrumento que é percutido, carregado e desfilado impõe um problema de engenharia
         que refletor de palco não tem: fixação, alimentação e resistência a impacto contínuo.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         Do grupo nasceu o bloco de carnaval União Altaneira, em Barão Geraldo, Campinas,
         que hoje reúne mais de dez mil pessoas em seus desfiles. Os instrumentos iluminados
         são de uma época que muita gente ainda lembra.
-      </p>
+      </p>      </details>
+
       <ul class="entry-tags"><li>Bateria Alcalina</li><li>União Altaneira</li><li>Barão Geraldo</li></ul>
     </div>
   </article>
@@ -317,6 +343,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         shows da extinta Eletrogroove, de rock instrumental, groove e eletrônico. Boa parte do
         registro que ainda circula na web vem de gravações feitas pelo próprio público.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         A pré-história começou com o convite para criar objetos de palco e iluminar o grupo
         Alexei e a Banda Toda. Depois vieram gravações com a Banda de Argila e outras bandas,
@@ -336,7 +365,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <div class="shots">
         <figure><a href="fotos/black-pearl-frente.jpg"><img src="fotos/black-pearl-frente.jpg" alt="Black Pearl em operação durante o show" loading="lazy"></a><figcaption>Black Pearl em operação durante o show</figcaption></figure>
         <figure><a href="fotos/black-pearl-interior.jpg"><img src="fotos/black-pearl-interior.jpg" alt="Interior da Black Pearl — a fiação que ninguém via" loading="lazy"></a><figcaption>Interior da Black Pearl — a fiação que ninguém via</figcaption></figure>
-      </div>
+      </div>      </details>
+
       <ul class="entry-tags"><li>Eletrogroove</li><li>Black Pearl</li><li>Bar do Zé</li><li>UV-A · 365 nm</li></ul>
     </div>
   </article>
@@ -354,6 +384,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Caixa de som luminosa criada em parceria com Gabriel Ferreira, que trabalhou comigo
         até 2012. Registrada como modelo de utilidade.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         O que a distingue não é ter LED, e sim onde a luz aparece: o corpo inteiro da caixa é
         de plástico translúcido, iluminado por dentro com LEDs RGB que reagem ao som. A carcaça
@@ -367,7 +400,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <div class="shots">
         <figure><a href="fotos/ledspeaker.jpg"><img src="fotos/ledspeaker.jpg" alt="Quatro unidades acesas — o corpo inteiro difunde a luz" loading="lazy"></a><figcaption>Quatro unidades acesas — o corpo inteiro difunde a luz</figcaption></figure>
         <figure><a href="fotos/ledspeaker-primeiros.jpg"><img src="fotos/ledspeaker-primeiros.jpg" alt="Os dois primeiros pares construídos" loading="lazy"></a><figcaption>Os dois primeiros pares construídos</figcaption></figure>
-      </div>
+      </div>      </details>
+
       <ul class="entry-tags"><li>Gabriel Ferreira</li><li>modelo de utilidade</li><li>difusão pelo corpo</li></ul>
     </div>
   </article>
@@ -386,6 +420,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         alta potência com LEDs RGB e brancos, controle remoto e alimentação por bateria LiPo
         de drone — na prática, luz de palco que não depende de tomada nem de cabo.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         Isso muda o que a direção pode pedir. O refletor deixa de ser um ponto fixo na grade e
         passa a ser objeto de cena: o ator carrega, aponta, caminha com ele rua afora. A
@@ -394,7 +431,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <div class="shots">
         <figure><a href="fotos/grupo-do-trecho.jpg"><img src="fotos/grupo-do-trecho.jpg" alt="O Grupo do Trecho com os holofotes em cena, julho de 2009" loading="lazy"></a><figcaption>O Grupo do Trecho com os holofotes em cena, julho de 2009</figcaption></figure>
         <figure><a href="fotos/holofotes-rgb.jpg"><img src="fotos/holofotes-rgb.jpg" alt="Os holofotes montados: RGB e brancos, prontos para entrega" loading="lazy"></a><figcaption>Os holofotes montados: RGB e brancos, prontos para entrega</figcaption></figure>
-      </div>
+      </div>      </details>
+
       <ul class="entry-tags"><li>Grupo do Trecho</li><li>bateria LiPo</li><li>Prêmio Revelação 2009</li></ul>
     </div>
   </article>
@@ -415,6 +453,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         de Lissajous, do físico que descreveu a composição de dois movimentos oscilatórios
         perpendiculares.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         O que torna isso diferente de um projetor sincronizado por software é que não há
         sincronização nenhuma: o desenho <em>é</em> o som, por via mecânica direta. A guitarra
@@ -428,7 +469,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <div class="shots">
         <figure><a href="fotos/laser-boing-palco.jpg"><img src="fotos/laser-boing-palco.jpg" alt="Bruno Kayapy no Futurível, banhado pelo feixe que sua guitarra desenhava" loading="lazy"></a><figcaption>Bruno Kayapy no Futurível, banhado pelo feixe que sua guitarra desenhava</figcaption></figure>
         <figure><a href="fotos/laser-boing-aparato.jpg"><img src="fotos/laser-boing-aparato.jpg" alt="O aparato do LASER Boing, com a marca LedsLife na lateral" loading="lazy"></a><figcaption>O aparato do LASER Boing, com a marca LedsLife na lateral</figcaption></figure>
-      </div>
+      </div>      </details>
+
       <ul class="entry-tags"><li>Futurível</li><li>Auditório Ibirapuera</li><li>curvas de Lissajous</li><li>Macaco Bong</li></ul>
     </div>
   </article>
@@ -448,6 +490,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         milímetros e não alcança o volume. A hipótese, orientada pelo Professor Vitor
         Baranauskas no DSIF, era contornar isso pelo comprimento de onda.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         A ideia era elegante: <strong>532 nm é exatamente o dobro de 266 nm</strong>, que fica
         sobre o pico de absorção dos ácidos nucleicos. Se dois fótons verdes fossem absorvidos
@@ -461,7 +506,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         incoerente entrega, por mais potente que seja. O resultado foi negativo e está registrado
         como tal. A parte microbiológica contou com a Professora Elisabeth Pelosi, então
         responsável pelo departamento de microbiologia da FATEC de Sorocaba.
-      </p>
+      </p>      </details>
+
       <ul class="entry-tags"><li>absorção a dois fótons</li><li>efluentes hospitalares</li><li>FATEC Sorocaba</li></ul>
     </div>
   </article>
@@ -482,11 +528,15 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Baranauskas no DSIF e fornecidos à Professora Elaine Oliveira, da Unicamp e da FATEC
         de Sorocaba.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         O infravermelho próximo é usado nesse tipo de trabalho justamente porque atravessa
         tecido biológico melhor do que a luz visível — a lógica é a mesma que motivou o
         experimento com verde, aplicada a outro alvo.
-      </p>
+      </p>      </details>
+
       <ul class="entry-tags"><li>nanotubos de carbono</li><li>NIR</li><li>Unicamp · FATEC</li></ul>
     </div>
   </article>
@@ -506,6 +556,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         operando em um espaço onde a luz não ilumina a cena — ela é parte da cena, e precisa
         atravessar temporada inteira sem falhar.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         O trabalho mais extenso foi em <i>Acordes</i>, de 2012, sobre Santos Dumont, para a qual construí
         os objetos luminosos de cena. O maior deles: uma pista de pouso de mais de quarenta
@@ -530,7 +583,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       <div class="shots">
         <figure><a href="fotos/acordes-pista.jpg"><img src="fotos/acordes-pista.jpg" alt="A pista de pouso de mais de quarenta metros atravessando o Teatro Oficina" loading="lazy"></a><figcaption>A pista de pouso de mais de quarenta metros atravessando o Teatro Oficina</figcaption></figure>
         <figure><a href="fotos/acordes-coracao.jpg"><img src="fotos/acordes-coracao.jpg" alt="O coração de Santos Dumont em cena, pulsando em vermelho" loading="lazy"></a><figcaption>O coração de Santos Dumont em cena, pulsando em vermelho</figcaption></figure>
-      </div>
+      </div>      </details>
+
       <ul class="entry-tags"><li>Acordes · 2012</li><li>14-Bis</li><li>LASER cênico</li><li>São Paulo</li></ul>
     </div>
   </article>
@@ -568,6 +622,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         O ápice foi a exposição <i>Brincando com Coisa Séria</i>, na galeria A7MA, em São Paulo,
         onde montei toda a estrutura de luz das obras.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         A ideia não era o efeito genérico que controlador RGB entrega — aquela transição suave
         entre matizes que não diz nada sobre a obra. Era alternância deliberada entre vermelho,
@@ -595,7 +652,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Houve ainda um terceiro capítulo, corporativo: uma instalação num edifício operacional do
         Itaú, em São Paulo, com quatro grafites dele nos halls de elevadores e oito Luminárias
         Urutau que ele fez questão de especificar.
-      </p>
+      </p>      </details>
+
       <ul class="entry-tags"><li>Roberto Bieto</li><li>Galeria A7MA</li><li>Vila Butantan</li><li>Brilia</li><li>primeiro grafite de LED do Brasil</li></ul>
     </div>
   </article>
@@ -614,11 +672,15 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         um DeLorean DMC-12 de 1981. Milhares de peças, referência visual que qualquer pessoa
         que viu o filme conhece de cor e nenhuma margem para aproximação.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         O carro apareceu na Rede Globo, na Rede Record e em produções do canal Porta dos Fundos.
         Hoje pertence ao Museu do Carro Antigo de São Roque, em São Paulo, vendido por mais de
         um milhão de reais.
-      </p>
+      </p>      </details>
+
       <ul class="entry-tags"><li>DMC-12</li><li>Museu do Carro Antigo</li><li>São Roque · SP</li></ul>
     </div>
   </article>
@@ -636,6 +698,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Primeiro produto próprio, saindo do trabalho sob encomenda para algo reproduzível.
         Apresentada em estande próprio na Expolux 2018, em São Paulo.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         A instalação mais significativa veio por convite do Roberto Bieto, para um edifício
         operacional do Itaú em São Paulo. Ele assinou quatro grafites nos quatro halls de
@@ -645,7 +710,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         elemento de uma instalação, num prédio onde havia painéis de LED sendo instalados ao
         lado. Ela passou no teste mais difícil que um objeto de luz enfrenta, que é conviver com
         outros.
-      </p>
+      </p>      </details>
+
       <ul class="entry-tags"><li>Expolux 2018</li><li>Itaú · São Paulo</li><li>Roberto Bieto</li><li>oito unidades</li></ul>
     </div>
   </article>
@@ -666,6 +732,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         Unicamp que seguiu aberto durante o <i>lockdown</i>, justamente por estar estudando
         formas de enfrentar a Covid-19. A Professora e suas colaboradoras conduziram os testes.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         Depois disso passei a ser chamado com frequência para avaliar tecnicamente soluções de
         UVGI que chegavam à universidade vindas de empresas. Fiz isso sem cobrar, por entender
@@ -679,66 +748,18 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         pelo verde não se confirmou, quinze anos antes.
       </p>
       <p>
-        Houve também uma versão em papelão forrado com papel-alumínio, e ela merece explicação.
-        A ideia era ampliar o alcance da ferramenta: se a máscara descartável pudesse ser
-        reutilizada com segurança, valia divulgar uma construção que qualquer pessoa conseguisse
-        reproduzir com material de mercado. Foi o que a TV Record Campinas mostrou em 22 de maio
-        de 2020, na reportagem do Luiz Crescenzo.
-      </p>
-      <p>
-        O forro não é acabamento, é projeto. O alumínio reflete cerca de <strong>75% da radiação
-        ultravioleta</strong> — o valor está no <i>Ultraviolet Germicidal Irradiation Handbook</i>,
-        de Kowalski (2009) — de modo que o papel-alumínio devolve para dentro da câmara a maior
-        parte do que escaparia pelas paredes. A dose útil sobre o objeto sobe sem que a lâmpada
-        mude. É o mesmo princípio do refletor de um farol, aplicado a um comprimento de onda que
-        ninguém enxerga.
-      </p>
-      <p>
-        O papelão resolve o acesso e cria um risco: aumenta a chance de exposição acidental da
-        pele e dos olhos ao UV-C. Fiz questão de deixar isso explícito ao repórter, que divulgou
-        corretamente o cuidado necessário ao abrir a câmara com a lâmpada acesa. A câmara de
-        alumínio — a que está na dissertação — resolve o problema por projeto, com um
-        <strong>microswitch de segurança que corta a lâmpada</strong> quando o equipamento não
-        está apoiado sobre a mesa ou bandeja. Intertravamento é o que separa uma fonte de UV-C de
-        um acidente esperando acontecer.
-      </p>
-      <p>
-        Seis dias depois, em 28 de maio, o protótipo em alumínio foi ao ar no <i>Jornal da
-        Tarde</i> da TV Cultura, a partir de 1min52. Explico ali por que o equipamento tem
-        formato de tampa cobre-bolos: não se pode olhar diretamente para UV-C, então a geometria
-        existe para conter a radiação dentro da câmara. A reportagem mostra o laudo do LAV
-        validando o resultado e encerra com a Professora Clarice Arns falando sobre o que estava
-        em jogo — desinfetar máscaras rápido o bastante para reaproveitá-las, num momento em que
-        faltava equipamento de proteção para profissionais de saúde. Nas palavras dela, a função
-        da força-tarefa era salvar vidas.
+        Houve duas versões: a de alumínio, com intertravamento de segurança, e uma improvisada em
+        papelão forrado, divulgada para quem quisesse reproduzir. As duas foram ao ar na imprensa
+        em maio de 2020 — a de papelão na TV Record Campinas, a de alumínio no <i>Jornal da
+        Tarde</i> da TV Cultura, que mostrou o laudo do LAV validando o método.
       </p>
       <div class="shots">
-        <figure><a href="fotos/camara-lav.jpg"><img src="fotos/camara-lav.jpg" alt="O protótipo em alumínio manuseado no Laboratório de Virologia Animal" loading="lazy"></a><figcaption>O protótipo em alumínio dentro do LAV, durante os testes — frame da mesma reportagem</figcaption></figure>
+        <figure><a href="fotos/camara-lav.jpg"><img src="fotos/camara-lav.jpg" alt="O protótipo em alumínio manuseado no Laboratório de Virologia Animal" loading="lazy"></a><figcaption>O protótipo em alumínio dentro do LAV, durante os testes</figcaption></figure>
       </div>
 
-      <div class="videos">
-      <a class="videocard" href="https://www.youtube.com/watch?v=vWIRtm6stqg" target="_blank" rel="noopener">
-        <figure style="margin:0">
-          <div class="frame">
-            <img src="fotos/camara-record.jpg" alt="A câmara de papelão forrado com papel-alumínio, com a fiação e a eletrônica aparentes" loading="lazy">
-            <span class="play"><i>▶</i></span>
-          </div>
-          <figcaption>A versão em papelão · TV Record Campinas, 22 de maio de 2020 · reportagem de Luiz Crescenzo</figcaption>
-        </figure>
-      </a>
-      <a class="videocard" href="https://youtu.be/8HYsHcVTbGY" target="_blank" rel="noopener">
-        <figure style="margin:0">
-          <div class="frame">
-            <img src="fotos/camara-tvcultura.jpg" alt="O protótipo da Câmara Germicida na reportagem do Jornal da Tarde" loading="lazy">
-            <span class="play"><i>▶</i></span>
-          </div>
-          <figcaption>Jornal da Tarde, TV Cultura · 28 de maio de 2020 · a partir de 1min52</figcaption>
-        </figure>
-      </a>
-      </div>
+      <a class="videolink" href="/camara-germicida/">→ Projeto, geometria, segurança e as reportagens completas</a>      </details>
 
-      <a class="videolink" href="/camara-germicida/">→ Página dedicada: como o equipamento foi projetado</a>
-      <ul class="entry-tags"><li>LAV · Unicamp</li><li>TV Cultura</li><li>TV Record</li><li>intertravamento</li><li>refletância do alumínio</li><li>UVGI</li><li>EGEAR</li></ul>
+      <ul class="entry-tags"><li>LAV · Unicamp</li><li>UVGI</li><li>EGEAR</li><li>imprensa · 2020</li></ul>
     </div>
   </article>
 
@@ -758,6 +779,9 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         de altura, forma pouco convencional — algo entre cogumelo e água-viva — com movimento de
         rotação, luzes, som, projeção e sensores.
       </p>
+      <details>
+        <summary>continuar lendo</summary>
+
       <p>
         A instalação permite que crianças e adultos criem composições sonoras tocando faixas de
         luz que representam instrumentos musicais. É produto do projeto Sistemas Socioenativos,
@@ -767,7 +791,8 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
       </p>
       <div class="shots">
         <figure><a href="fotos/instint.jpg"><img src="fotos/instint.jpg" alt="O InstInt em operação no Museu Exploratório de Ciências" loading="lazy"></a><figcaption>O InstInt em operação no Museu Exploratório de Ciências</figcaption></figure>
-      </div>
+      </div>      </details>
+
       <ul class="entry-tags"><li>IC · Unicamp</li><li>FAPESP</li><li>Museu Exploratório de Ciências</li></ul>
     </div>
   </article>
@@ -775,36 +800,36 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
 
 <section class="sec" id="led-e-uvc">
   <div class="note reveal">
-    <p class="eyebrow">Nota técnica</p>
-    <h2>A Câmara Germicida não usa LED.</h2>
+    <p class="eyebrow">Sobre o nome</p>
+    <h2>O nome diz LED. O trabalho é mais largo que isso.</h2>
     <p>
-      Vale registrar isso de forma explícita, porque o nome LedsLife levou algumas pessoas a
-      supor o contrário na época — uma suposição que nunca partiu de mim.
+      A marca nasceu em 2008, quando LED era de fato o assunto. Quinze anos depois, o arquivo
+      acima atravessa o espectro bem além dele — e o projeto mais conhecido desta lista,
+      a Câmara Germicida, <strong>não usa LED nenhum</strong>. Usa lâmpada de vapor de mercúrio
+      a baixa pressão. Algumas pessoas supuseram o contrário na época, e a suposição nunca partiu
+      de mim.
     </p>
 
     <dl class="figures">
-      <div class="fig"><dt>Fonte utilizada</dt>
-        <dd>Hg<small>Lâmpada de vapor de mercúrio a baixa pressão</small></dd></div>
-      <div class="fig"><dt>Emissão principal</dt>
-        <dd style="color:var(--uvc)">253,7 nm<small>Linha ressonante do mercúrio, dentro da faixa UV-C</small></dd></div>
-      <div class="fig"><dt>Pico germicida do DNA</dt>
-        <dd>≈ 265 nm<small>Absorção máxima de ácidos nucleicos</small></dd></div>
-      <div class="fig"><dt>Tentativa anterior</dt>
-        <dd style="color:var(--laser)">532 nm<small>O dobro de 266 nm — a hipótese de dois fótons, não confirmada</small></dd></div>
+      <div class="fig"><dt>Luz negra</dt>
+        <dd style="color:var(--uva)">365 nm<small>Cenário e figurino brilhando sozinhos no palco</small></dd></div>
+      <div class="fig"><dt>Verde</dt>
+        <dd style="color:var(--laser)">532 nm<small>LASER de cena, e a tentativa de atravessar a água</small></dd></div>
+      <div class="fig"><dt>Infravermelho</dt>
+        <dd style="color:var(--nir)">850 nm<small>Alcançando tecido biológico na pesquisa oncológica</small></dd></div>
+      <div class="fig"><dt>Germicida</dt>
+        <dd style="color:var(--uvc)">253,7 nm<small>Destruindo material genético dentro da câmara</small></dd></div>
     </dl>
 
     <p>
-      A emissão em <strong>253,7 nm</strong> cai muito perto do pico de absorção do DNA e do RNA,
-      e é isso que dá à lâmpada de vapor de mercúrio sua eficiência germicida. Existem LEDs UV-C,
-      mas em 2020 eles não entregavam a potência radiante por real investido que a aplicação
-      exigia. A escolha pela lâmpada foi técnica, não de conveniência.
+      Quatro problemas de naturezas completamente diferentes, uma única variável: o comprimento
+      de onda. É o que o eixo no topo desta página mostra de uma vez — e é a razão de o arquivo
+      estar organizado por nanômetro, e não por cliente ou por setor.
     </p>
     <p>
-      Olhando o espectro no topo desta página, a trajetória inteira fica legível de uma vez:
-      <strong>365 nm</strong> fazendo cenário brilhar no palco, <strong>532 nm</strong> tentando
-      atravessar água que o ultravioleta não atravessa, <strong>850 nm</strong> alcançando tecido
-      biológico, e <strong>253,7 nm</strong> destruindo material genético. Quatro problemas
-      diferentes, uma única variável.
+      A explicação técnica de por que a câmara usa vapor de mercúrio, e não LED UV-C, está na
+      <a href="/camara-germicida/" style="color:var(--laser)">página dedicada ao equipamento</a>,
+      junto com a geometria, o intertravamento de segurança e o cuidado com ozônio.
     </p>
   </div>
 </section>
@@ -917,6 +942,16 @@ document.documentElement.classList.add('js');
     en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})
   },{rootMargin:'0px 0px -12% 0px',threshold:.05});
   els.forEach(function(e){io.observe(e)});
+})();
+(function(){
+  var b=document.getElementById('expandall'); if(!b) return;
+  b.addEventListener('click',function(){
+    var ds=document.querySelectorAll('.entry details');
+    var abrir=b.getAttribute('aria-expanded')!=='true';
+    ds.forEach(function(d){d.open=abrir});
+    b.setAttribute('aria-expanded',abrir?'true':'false');
+    b.textContent=abrir?'Recolher todos os projetos':'Expandir todos os projetos';
+  });
 })();
 </script>
 </body>
