@@ -122,6 +122,26 @@ p{margin:0 0 1.1em}
   transition:border-color .25s ease}
 .shots a:hover{border-color:var(--laser)}
 .shots img{width:100%;height:190px;object-fit:cover;display:block}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px;max-width:820px}
+.videocard{display:block;text-decoration:none;max-width:560px}
+.videocard .frame{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);
+  background:#0A0813;transition:border-color .25s ease}
+.videocard:hover .frame{border-color:var(--laser)}
+.videocard img{width:100%;display:block}
+.videocard .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,rgba(13,10,22,.15),rgba(13,10,22,.55))}
+.videocard .play i{width:60px;height:60px;border-radius:50%;background:rgba(13,10,22,.72);
+  border:1.5px solid rgba(237,233,245,.85);display:flex;align-items:center;justify-content:center;
+  font-style:normal;font-size:19px;color:var(--paper);padding-left:5px;transition:background .25s ease}
+.videocard:hover .play i{background:var(--laser);color:#0D0A16;border-color:var(--laser)}
+.videocard figcaption{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:10px;line-height:1.55}
+.destaques{margin:clamp(30px,5vh,52px) 0 0;padding-top:26px;border-top:1px solid var(--line)}
+.destaques p.eyebrow{margin-bottom:14px}
+.destaques ul{display:flex;flex-wrap:wrap;gap:9px;list-style:none;padding:0;margin:0}
+.destaques a{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+  text-decoration:none;color:#CFC9E4;border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  transition:border-color .25s ease,color .25s ease,background .25s ease}
+.destaques a:hover{border-color:var(--laser);color:var(--laser);background:var(--panel)}
 .videolink{display:inline-flex;align-items:center;gap:9px;margin-top:20px;
   font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-decoration:none;
   color:var(--laser);border:1px solid var(--line);border-radius:999px;padding:8px 16px;
@@ -219,7 +239,7 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
     Instrumentos de percussão iluminados, holofotes sem fio, um LASER que desenha o som,
     luz negra de palco, uma réplica funcional
     da Time Machine de <i>De Volta Para o Futuro</i>, pesquisa com luz verde e infravermelho
-    no DSIF da Unicamp, uma câmara de desinfecção por ultravioleta testada durante a pandemia,
+    no DSIF da Unicamp, uma câmara de desinfecção por ultravioleta validada pela Unicamp na pandemia,
     uma instalação robótica de três metros e, hoje, um irrigador automático.
     Esta página é o arquivo desse percurso.
   </p>
@@ -228,13 +248,23 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
     <div class="spectrum-band">
       <div class="spectrum-fill"></div>
       <div class="spectrum-visible"><span>faixa visível</span></div>
-      <div class="mark hi" style="left:6.75%" data-label="254 · UV-C"></div>
+      <div class="mark hi" style="left:6.75%" data-label="253,7 · UV-C"></div>
       <div class="mark lo" style="left:20.6%" data-label="365 · luz negra"></div>
       <div class="mark" style="left:41.5%" data-label="532 · verde"></div>
       <div class="mark lo flip" style="left:81.25%" data-label="850 · infravermelho"></div>
     </div>
     <div class="spectrum-axis"><span>200 nm</span><span>faixa visível: 380 — 700 nm</span><span>1000 nm</span></div>
   </div>
+
+  <nav class="destaques">
+    <p class="eyebrow">Se for ver uma coisa só</p>
+    <ul>
+      <li><a href="/camara-germicida/">A Câmara Germicida, em detalhe</a></li>
+      <li><a href="#delorean">A Time Machine no DeLorean</a></li>
+      <li><a href="#laser-boing">LASER Boing com Gilberto Gil</a></li>
+      <li><a href="#bieto">O primeiro grafite de LED do Brasil</a></li>
+    </ul>
+  </nav>
 </header>
 
 <section class="sec" id="arquivo">
@@ -648,7 +678,67 @@ footer a:hover{color:var(--laser);border-color:var(--laser)}
         estou concluindo agora — e, no fundo, o retorno ao caminho direto depois que o atalho
         pelo verde não se confirmou, quinze anos antes.
       </p>
-      <ul class="entry-tags"><li>LAV · Unicamp</li><li>UVGI</li><li>EGEAR</li><li>São Leopoldo Mandic</li></ul>
+      <p>
+        Houve também uma versão em papelão forrado com papel-alumínio, e ela merece explicação.
+        A ideia era ampliar o alcance da ferramenta: se a máscara descartável pudesse ser
+        reutilizada com segurança, valia divulgar uma construção que qualquer pessoa conseguisse
+        reproduzir com material de mercado. Foi o que a TV Record Campinas mostrou em 22 de maio
+        de 2020, na reportagem do Luiz Crescenzo.
+      </p>
+      <p>
+        O forro não é acabamento, é projeto. O alumínio reflete cerca de <strong>75% da radiação
+        ultravioleta</strong> — o valor está no <i>Ultraviolet Germicidal Irradiation Handbook</i>,
+        de Kowalski (2009) — de modo que o papel-alumínio devolve para dentro da câmara a maior
+        parte do que escaparia pelas paredes. A dose útil sobre o objeto sobe sem que a lâmpada
+        mude. É o mesmo princípio do refletor de um farol, aplicado a um comprimento de onda que
+        ninguém enxerga.
+      </p>
+      <p>
+        O papelão resolve o acesso e cria um risco: aumenta a chance de exposição acidental da
+        pele e dos olhos ao UV-C. Fiz questão de deixar isso explícito ao repórter, que divulgou
+        corretamente o cuidado necessário ao abrir a câmara com a lâmpada acesa. A câmara de
+        alumínio — a que está na dissertação — resolve o problema por projeto, com um
+        <strong>microswitch de segurança que corta a lâmpada</strong> quando o equipamento não
+        está apoiado sobre a mesa ou bandeja. Intertravamento é o que separa uma fonte de UV-C de
+        um acidente esperando acontecer.
+      </p>
+      <p>
+        Seis dias depois, em 28 de maio, o protótipo em alumínio foi ao ar no <i>Jornal da
+        Tarde</i> da TV Cultura, a partir de 1min52. Explico ali por que o equipamento tem
+        formato de tampa cobre-bolos: não se pode olhar diretamente para UV-C, então a geometria
+        existe para conter a radiação dentro da câmara. A reportagem mostra o laudo do LAV
+        validando o resultado e encerra com a Professora Clarice Arns falando sobre o que estava
+        em jogo — desinfetar máscaras rápido o bastante para reaproveitá-las, num momento em que
+        faltava equipamento de proteção para profissionais de saúde. Nas palavras dela, a função
+        da força-tarefa era salvar vidas.
+      </p>
+      <div class="shots">
+        <figure><a href="fotos/camara-lav.jpg"><img src="fotos/camara-lav.jpg" alt="O protótipo em alumínio manuseado no Laboratório de Virologia Animal" loading="lazy"></a><figcaption>O protótipo em alumínio dentro do LAV, durante os testes — frame da mesma reportagem</figcaption></figure>
+      </div>
+
+      <div class="videos">
+      <a class="videocard" href="https://www.youtube.com/watch?v=vWIRtm6stqg" target="_blank" rel="noopener">
+        <figure style="margin:0">
+          <div class="frame">
+            <img src="fotos/camara-record.jpg" alt="A câmara de papelão forrado com papel-alumínio, com a fiação e a eletrônica aparentes" loading="lazy">
+            <span class="play"><i>▶</i></span>
+          </div>
+          <figcaption>A versão em papelão · TV Record Campinas, 22 de maio de 2020 · reportagem de Luiz Crescenzo</figcaption>
+        </figure>
+      </a>
+      <a class="videocard" href="https://youtu.be/8HYsHcVTbGY" target="_blank" rel="noopener">
+        <figure style="margin:0">
+          <div class="frame">
+            <img src="fotos/camara-tvcultura.jpg" alt="O protótipo da Câmara Germicida na reportagem do Jornal da Tarde" loading="lazy">
+            <span class="play"><i>▶</i></span>
+          </div>
+          <figcaption>Jornal da Tarde, TV Cultura · 28 de maio de 2020 · a partir de 1min52</figcaption>
+        </figure>
+      </a>
+      </div>
+
+      <a class="videolink" href="/camara-germicida/">→ Página dedicada: como o equipamento foi projetado</a>
+      <ul class="entry-tags"><li>LAV · Unicamp</li><li>TV Cultura</li><li>TV Record</li><li>intertravamento</li><li>refletância do alumínio</li><li>UVGI</li><li>EGEAR</li><li>São Leopoldo Mandic</li></ul>
     </div>
   </article>
 

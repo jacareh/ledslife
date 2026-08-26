@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Câmara Germicida Portátil — Fabio Stasiak</title>
+<meta name="description" content="Como foi projetada a Câmara Germicida Portátil de UV-C construída por Fabio Stasiak em 2020 e testada no Laboratório de Virologia Animal da Unicamp: geometria parabólica, fonte de vapor de mercúrio em 253,7 nm, intertravamento de segurança e a versão em papelão.">
+<link rel="canonical" href="https://ledslife.com.br/camara-germicida/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://ledslife.com.br/camara-germicida/">
+<meta property="og:title" content="Câmara Germicida Portátil — UV-C, 253,7 nm">
+<meta property="og:description" content="O equipamento de desinfecção por ultravioleta construído nas primeiras semanas da pandemia e testado na Unicamp.">
+<meta property="og:image" content="https://ledslife.com.br/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D0A16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0D0A16; --panel:#171232; --panel-2:#1E1840; --line:#2E2757;
+  --uvc:#7B5CFF; --uva:#A855F7; --laser:#3FE0A0; --amber:#FFB03A; --nir:#E0574F;
+  --paper:#EDE9F5; --mute:#9A93B8;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --gut:clamp(20px,5vw,64px); --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--void);color:var(--paper);font-family:var(--body);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(60vw 50vh at 12% -8%,rgba(123,92,255,.20),transparent 65%),
+             radial-gradient(45vw 40vh at 92% 6%,rgba(63,224,160,.08),transparent 65%),
+             radial-gradient(40vw 35vh at 70% 95%,rgba(224,87,79,.07),transparent 65%)}
+.wrap{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.025em;margin:0}
+p{margin:0 0 1.1em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 18px}
+
+/* HERO */
+.hero{padding:clamp(52px,10vh,110px) 0 clamp(36px,6vh,64px)}
+.brandline{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:clamp(24px,5vh,44px)}
+.brandline b{color:var(--paper);font-weight:500;letter-spacing:.18em}
+.brandline s{color:#6C6490;text-decoration-color:var(--uvc)}
+.hero h1{font-size:clamp(38px,7.2vw,84px);max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--uvc)}
+.hero .lede{margin-top:24px;max-width:62ch;font-size:clamp(17px,2vw,19.5px);color:#CFC9E4}
+
+/* ESPECTRO */
+.spectrum{margin:clamp(40px,7vh,76px) 0 0}
+.spectrum-band{position:relative;height:74px;border-radius:5px;overflow:hidden;border:1px solid var(--line);background:#0A0813}
+.spectrum-fill{position:absolute;inset:0;transform-origin:left center;
+  background:linear-gradient(90deg,
+    #0F0C1C 0%, #4A2FA8 6.75%, #16112B 13%,
+    #2A1B5E 20.6%, #7B3FD6 22.5%,
+    #5B3BD6 25%, #2C4EFF 30%, #2C6BFF 33.1%,
+    #22D3EE 37%, #3FE0A0 41.5%, #C6E44A 46%,
+    #FFB03A 50%, #FF8A3A 52.5%, #E23B4A 57%,
+    #6A1424 62.5%, #4A1016 70%, #380C10 81.25%, #17080A 100%)}
+.spectrum-visible{position:absolute;top:0;bottom:0;left:22.5%;right:37.5%;
+  border-left:1px solid rgba(237,233,245,.5);border-right:1px solid rgba(237,233,245,.5)}
+.spectrum-visible span{position:absolute;top:8px;left:10px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.mark{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--paper)}
+.mark::after{content:attr(data-label);position:absolute;top:calc(100% + 9px);left:0;
+  font-family:var(--mono);font-size:11px;color:var(--mute);white-space:nowrap}
+.mark.hi{background:var(--uvc);box-shadow:0 0 16px 2px rgba(123,92,255,.75)}
+.mark.hi::after{color:var(--uvc)}
+.mark.lo::after{top:calc(100% + 26px)}
+.mark.flip::after{left:auto;right:0}
+.spectrum-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;
+  color:#6C6490;margin-top:64px;padding-top:12px;border-top:1px solid var(--line)}
+
+/* SEÇÕES */
+.sec{padding:clamp(60px,10vh,112px) 0}
+.sec-head{max-width:64ch;margin-bottom:clamp(30px,5vh,50px)}
+.sec-head h2{font-size:clamp(27px,4vw,44px)}
+.sec-head p{margin-top:16px;color:#CFC9E4}
+
+/* ENTRADAS */
+.entry{display:grid;grid-template-columns:172px 1fr;gap:clamp(18px,4vw,52px);padding:32px 0;border-top:1px solid var(--line)}
+.entry:last-child{border-bottom:1px solid var(--line)}
+.entry-meta{font-family:var(--mono);font-size:12.5px;line-height:1.55}
+.entry-nm{display:block;font-size:18px;color:var(--paper);letter-spacing:-.01em}
+.entry-band{display:block;color:var(--mute);margin:2px 0 10px}
+.entry-year{display:block;color:#6C6490;letter-spacing:.08em}
+.tag-kind{display:inline-block;margin-top:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  padding:3px 9px;border-radius:3px;border:1px solid var(--line);color:var(--mute)}
+.tag-kind.cena{border-color:#4A3A80;color:#B9A6F0}
+.tag-kind.pesq{border-color:#2E5C50;color:#6FD9B0}
+.entry h3{font-size:clamp(21px,2.7vw,29px);margin-bottom:12px}
+.entry p{color:#CFC9E4;max-width:64ch;margin-bottom:0}
+.entry p + p{margin-top:.85em}
+.entry-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
+.entry-tags li{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);
+  border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:24px}
+.shots figure{margin:0}
+.shots a{display:block;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#0A0813;
+  transition:border-color .25s ease}
+.shots a:hover{border-color:var(--laser)}
+.shots img{width:100%;height:190px;object-fit:cover;display:block}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px;max-width:820px}
+.videocard{display:block;text-decoration:none;max-width:560px}
+.videocard .frame{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);
+  background:#0A0813;transition:border-color .25s ease}
+.videocard:hover .frame{border-color:var(--laser)}
+.videocard img{width:100%;display:block}
+.videocard .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,rgba(13,10,22,.15),rgba(13,10,22,.55))}
+.videocard .play i{width:60px;height:60px;border-radius:50%;background:rgba(13,10,22,.72);
+  border:1.5px solid rgba(237,233,245,.85);display:flex;align-items:center;justify-content:center;
+  font-style:normal;font-size:19px;color:var(--paper);padding-left:5px;transition:background .25s ease}
+.videocard:hover .play i{background:var(--laser);color:#0D0A16;border-color:var(--laser)}
+.videocard figcaption{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:10px;line-height:1.55}
+.destaques{margin:clamp(30px,5vh,52px) 0 0;padding-top:26px;border-top:1px solid var(--line)}
+.destaques p.eyebrow{margin-bottom:14px}
+.destaques ul{display:flex;flex-wrap:wrap;gap:9px;list-style:none;padding:0;margin:0}
+.destaques a{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+  text-decoration:none;color:#CFC9E4;border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  transition:border-color .25s ease,color .25s ease,background .25s ease}
+.destaques a:hover{border-color:var(--laser);color:var(--laser);background:var(--panel)}
+.videolink{display:inline-flex;align-items:center;gap:9px;margin-top:20px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-decoration:none;
+  color:var(--laser);border:1px solid var(--line);border-radius:999px;padding:8px 16px;
+  transition:border-color .25s ease,background .25s ease}
+.videolink:hover{border-color:var(--laser);background:var(--panel-2)}
+.shots figcaption{font-family:var(--mono);font-size:10.5px;color:#6C6490;margin-top:8px;line-height:1.55}
+@media (max-width:720px){.shots img{height:165px}}
+.swatch{width:11px;height:11px;border-radius:2px;display:inline-block;vertical-align:-1px;margin-right:7px}
+
+/* NOTA */
+.note{border:1px solid var(--line);border-radius:8px;background:var(--panel);
+  padding:clamp(26px,4vw,44px);border-left:3px solid var(--uvc)}
+.note h2{font-size:clamp(23px,3.2vw,34px);margin-bottom:18px}
+.note p{color:#CFC9E4;max-width:70ch}
+.note p:last-child{margin-bottom:0}
+.note strong{color:var(--paper);font-weight:500}
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:28px 0}
+.fig{background:var(--panel-2);padding:20px 22px}
+.fig dt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:9px}
+.fig dd{margin:0;font-family:var(--display);font-size:27px;font-weight:700;letter-spacing:-.02em}
+.fig dd small{display:block;font-family:var(--body);font-size:13px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:5px;line-height:1.45}
+
+/* AGORA */
+.now{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px}
+.card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;background:var(--panel);
+  padding:clamp(24px,3vw,34px);transition:border-color .25s ease,transform .25s ease,background .25s ease}
+.card:hover,.card:focus-visible{border-color:var(--laser);transform:translateY(-3px);background:var(--panel-2)}
+.card h3{font-size:24px;margin-bottom:10px}
+.card p{color:#CFC9E4;font-size:15.5px;margin-bottom:16px}
+.card span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--laser)}
+.card.is-study{border-left:3px solid var(--amber)}
+.card.is-study span{color:var(--amber)}
+.card.is-assoc{border-left:3px solid var(--uva)}
+.card.is-assoc span{color:var(--uva)}
+
+.aside{border-top:1px solid var(--line);padding-top:30px;margin-top:clamp(44px,7vh,72px);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,5vw,56px)}
+.aside h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.aside p{font-size:15px;color:#B6AFD0;max-width:52ch;margin-bottom:0}
+
+.tribute{padding:clamp(48px,8vh,88px) 0 0;text-align:center}
+.tribute p{font-family:var(--display);font-weight:500;font-size:clamp(18px,2.3vw,24px);line-height:1.42;
+  letter-spacing:-.015em;max-width:40ch;margin:0 auto 20px;color:var(--paper)}
+.tribute small{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);line-height:2}
+
+footer{margin-top:clamp(52px,8vh,88px);padding:28px 0 44px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:#6C6490}
+.footer-logo{width:172px;height:auto;opacity:.45;flex-shrink:0;transition:opacity .3s ease}
+footer:hover .footer-logo{opacity:.8}
+@media (max-width:720px){.footer-logo{width:140px}}
+footer a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--laser);border-color:var(--laser)}
+:focus-visible{outline:2px solid var(--laser);outline-offset:3px;border-radius:3px}
+
+.js .reveal{opacity:0;transform:translateY(18px)}
+.js .reveal.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+@keyframes sweep{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.js .spectrum-fill{animation:sweep 1.3s cubic-bezier(.25,.9,.3,1) .15s both}
+.js .spectrum-visible,.js .mark{animation:fadein .6s ease 1.35s both}
+.js .mark.hi{animation:fadein .7s ease 1.8s both}
+
+@media (max-width:720px){
+  body{font-size:16px}
+  .entry{grid-template-columns:1fr;gap:14px;padding:26px 0}
+  .entry-meta{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .entry-nm,.entry-band,.entry-year{display:inline}
+  .entry-band{margin:0}
+  .tag-kind{margin-top:0}
+  .spectrum-band{height:58px}
+  .mark::after{font-size:9.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* pagina interna */
+.back{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-decoration:none;
+  border-bottom:1px solid transparent;transition:color .25s ease,border-color .25s ease}
+.back:hover{color:var(--laser);border-color:var(--laser)}
+.lead{max-width:64ch;font-size:clamp(17px,2vw,19.5px);color:#CFC9E4;margin-top:26px}
+.block{padding:clamp(46px,7vh,80px) 0;border-top:1px solid var(--line)}
+.block h2{font-size:clamp(25px,3.6vw,40px);margin-bottom:22px;max-width:22ch}
+.block p{color:#CFC9E4;max-width:70ch}
+.block strong{color:var(--paper);font-weight:500}
+.warn{border:1px solid #5A3A2E;border-left:3px solid var(--amber);border-radius:8px;
+  background:rgba(255,176,58,.05);padding:clamp(22px,3vw,32px);margin:28px 0}
+.warn h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.warn p{margin-bottom:0;color:#E4D9C8}
+.warn p + p{margin-top:.9em}
+.status{border:1px solid var(--line);border-left:3px solid var(--uvc);border-radius:8px;
+  background:var(--panel);padding:clamp(22px,3vw,32px);margin-top:34px}
+.status h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--uvc);margin-bottom:14px}
+.status p{margin-bottom:0}
+.status p + p{margin-top:.9em}
+.refs{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid var(--line)}
+.refs li{padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:#B6AFD0}
+.refs li b{color:var(--paper);font-weight:500}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <a class="back" href="/">← arquivo LedsLife</a>
+  <h1 style="margin-top:34px">Câmara Germicida Portátil</h1>
+  <p class="lead">
+    Equipamento de desinfecção de objetos por ultravioleta germicida, construído nas primeiras
+    semanas da pandemia de 2020 e levado para teste no Laboratório de Virologia Animal da
+    Unicamp. Esta página descreve <strong>como ele foi projetado</strong> — a geometria, a
+    escolha da fonte, o intertravamento de segurança e os limites da versão improvisada em
+    papelão.
+  </p>
+  <div class="status">
+    <h3>Sobre os números</h3>
+    <p>
+      Esta página não traz dose, irradiância, redução logarítmica nem concentração de ozônio.
+      Esses resultados são objeto da dissertação de mestrado em andamento na FEEC/Unicamp e serão
+      publicados aqui depois da defesa, junto com o link para o registro permanente no repositório
+      da universidade. Divulgar medida antes da arguição elimina a chance de corrigi-la.
+    </p>
+    <p>
+      O que está aqui é raciocínio de projeto, princípio físico e literatura citada — tudo
+      verificável de forma independente.
+    </p>
+  </div>
+</header>
+
+<section class="block">
+  <h2>O problema, em maio de 2020</h2>
+  <p>
+    Faltava equipamento de proteção para profissionais de saúde. A máscara descartável, projetada
+    para um uso, estava sendo usada por turnos inteiros. A pergunta prática era: dá para
+    desinfetar e reutilizar, com rapidez suficiente para fazer diferença num plantão?
+  </p>
+  <p>
+    A radiação ultravioleta na faixa germicida é a resposta conhecida. Ela não deposita resíduo
+    químico, não molha, não deforma o tecido do filtro e age em segundos. O problema deixa de ser
+    "o que usar" e passa a ser <strong>como construir um equipamento que entregue a dose certa
+    sem ferir quem o opera</strong>.
+  </p>
+</section>
+
+<section class="block">
+  <h2>Por que vapor de mercúrio, e não LED</h2>
+  <p>
+    A fonte é uma lâmpada de <strong>vapor de mercúrio a baixa pressão</strong>, cuja emissão
+    ressonante ocorre em <strong>253,7 nm</strong> — dentro da faixa UV-C. O pico de absorção dos
+    ácidos nucleicos fica em torno de 265 nm, e a proximidade entre os dois valores é o que dá a
+    essa lâmpada sua eficiência germicida: a radiação é absorvida pelo material genético do
+    microrganismo e impede que ele se replique.
+  </p>
+  <p>
+    Existiam LEDs UV-C em 2020. A escolha pela lâmpada foi técnica: naquele momento os LEDs não
+    entregavam potência radiante por custo compatível com um equipamento que precisava ser
+    construído rápido e em quantidade. Vale o registro porque o nome da marca — LedsLife — levou
+    algumas pessoas a supor que a câmara usasse LED. Nunca usou.
+  </p>
+</section>
+
+<section class="block">
+  <h2>A geometria não é estética</h2>
+  <p>
+    A câmara tem seção transversal <strong>parabólica</strong>, com a boca voltada para baixo e a
+    lâmpada posicionada no <strong>foco</strong> da parábola. Essa escolha resolve dois problemas
+    de uma vez.
+  </p>
+  <p>
+    O primeiro é óptico. A propriedade que define a parábola é que todo raio partindo do foco se
+    reflete paralelo ao eixo. Com a lâmpada no foco e a boca virada para a bandeja, a radiação que
+    bate na parede interna é redirecionada para baixo em feixe organizado, em vez de se espalhar.
+    O objeto a ser desinfetado recebe tanto a radiação direta quanto a refletida.
+  </p>
+  <p>
+    O segundo é de segurança. O formato lembra uma tampa cobre-bolos, e isso é deliberado: a
+    câmara pousa sobre a superfície e se fecha contra ela. <strong>Não se pode olhar diretamente
+    para UV-C</strong> — a radiação lesiona córnea e pele sem que se perceba no momento, porque
+    não há sensação de calor nem de brilho. A geometria existe para que a luz não saia.
+  </p>
+</section>
+
+<section class="block">
+  <h2>O intertravamento</h2>
+  <p>
+    Qualquer pessoa consegue juntar uma lâmpada germicida e uma caixa. O que separa um equipamento
+    de uma armadilha é o <strong>intertravamento</strong>: o mecanismo que impede a fonte de operar
+    quando existe caminho de exposição.
+  </p>
+  <p>
+    A câmara em alumínio tem um <strong>microswitch de apoio</strong>. Não é sensor de tampa — é
+    sensor de pouso. A lâmpada só energiza com a câmara assentada sobre a mesa ou bandeja, vedada
+    contra a superfície. Basta erguer o equipamento para que a alimentação seja cortada, antes que
+    a boca se abra e a radiação escape.
+  </p>
+  <p>
+    A ordem importa: o corte acontece pelo gesto de levantar, não pela abertura consumada. É a
+    diferença entre prevenir a exposição e reagir a ela.
+  </p>
+</section>
+
+<section class="block">
+  <h2>Ozônio: um segundo agente, e um cuidado</h2>
+  <p>
+    Lâmpadas de vapor de mercúrio a baixa pressão também emitem em 185 nm, e essa linha gera
+    <strong>ozônio</strong> a partir do oxigênio do ar. O ozônio é útil aqui: sendo um gás, alcança
+    frestas, dobras e sombras onde a radiação direta não chega — ele complementa o UV-C justamente
+    onde o UV-C é fraco.
+  </p>
+  <p>
+    Mas ozônio é irritante respiratório e tem limite de exposição ocupacional definido em norma.
+    Por isso o equipamento sempre veio acompanhado da recomendação de uso em <strong>ambiente
+    arejado</strong>, e não como precaução genérica: dentro da câmara fechada a concentração é
+    alta, e ao abrir ela se dispersa no ambiente.
+  </p>
+  <div class="warn">
+    <h3>Um alerta que costuma ser ignorado</h3>
+    <p>
+      O cheiro fraco de ozônio ao abrir a câmara <strong>não é prova de concentração baixa</strong>.
+      O olfato humano detecta ozônio em concentrações muito abaixo do limite de segurança e
+      <strong>satura rapidamente</strong> — depois de alguns instantes você deixa de sentir o odor
+      mesmo com o gás presente.
+    </p>
+    <p>
+      Nunca use o nariz como instrumento de medida. Ventile o ambiente por princípio, não por
+      percepção.
+    </p>
+  </div>
+</section>
+
+<section class="block">
+  <h2>A versão em papelão, sem maquiagem</h2>
+  <p>
+    Houve uma segunda versão, em papelão forrado com papel-alumínio, mostrada pela TV Record
+    Campinas. A intenção era ampliar o alcance: divulgar uma construção que qualquer pessoa
+    conseguisse reproduzir com material de mercado, num momento em que a máscara descartável
+    estava sendo tratada como reutilizável de qualquer jeito.
+  </p>
+  <p>
+    O forro tem função óptica. O alumínio reflete cerca de <strong>75% da radiação
+    ultravioleta</strong> — valor do <i>Ultraviolet Germicidal Irradiation Handbook</i>, de
+    Kowalski (2009) — e devolve para dentro da câmara parte do fluxo que se perderia nas paredes.
+    Convém a ressalva: esse número se refere ao alumínio especular. O papel-alumínio doméstico tem
+    microrrugosidade e uma face fosca, e sua reflexão é mais difusa, com valor efetivo menor.
+  </p>
+  <p>
+    O resto foi improviso declarado. A eletrônica ficou do lado de fora por facilidade de arranjo
+    da fiação e para manter acessível o botão do temporizador. A alça para levantar era um pote de
+    fermento reaproveitado. Nada disso foi decisão de projeto, e não faz sentido apresentar como
+    se fosse.
+  </p>
+  <div class="warn">
+    <h3>As duas versões não são equivalentes</h3>
+    <p>
+      A câmara em papelão <strong>não tem intertravamento</strong>. Ela depende inteiramente de o
+      operador desligar a lâmpada antes de abrir. Isso aumenta o risco de exposição da pele e dos
+      olhos ao UV-C, e foi dito explicitamente ao repórter na época — que divulgou o alerta
+      corretamente.
+    </p>
+    <p>
+      A versão em alumínio, com o microswitch de apoio, é a que está documentada na dissertação. A
+      de papelão foi resposta de emergência, e seu mérito está na velocidade de disponibilização,
+      não em refinamento.
+    </p>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Quinze anos antes, pelo caminho oposto</h2>
+  <p>
+    Vale contar de onde isso vem, porque explica por que a fonte é convencional.
+  </p>
+  <p>
+    Na pós-graduação no DSIF, sob orientação do Professor Vitor Baranauskas, o problema era
+    desinfetar <strong>efluentes hospitalares</strong>. Ali o ultravioleta é ineficiente: sua
+    transmitância em meio aquoso é baixa, e ele é absorvido nos primeiros milímetros sem alcançar
+    o volume. A hipótese era contornar isso por <strong>absorção a dois fótons</strong> — 532 nm é
+    exatamente o dobro de 266 nm, sobre o pico de absorção dos ácidos nucleicos. Dois fótons
+    verdes absorvidos simultaneamente equivaleriam a um fóton ultravioleta, e o verde atravessa a
+    água com folga.
+  </p>
+  <p>
+    O experimento usou LEDs verdes de alta potência sobre células em meio de cultura, com apoio
+    microbiológico da Professora Elisabeth Pelosi, da FATEC de Sorocaba. <strong>O resultado foi
+    negativo</strong>, e por razão física de fundo: absorção a dois fótons é processo não linear
+    que exige densidade instantânea de fótons que uma fonte incoerente não entrega, por mais
+    potente que seja. Não foi falha de execução — foi o limite do método.
+  </p>
+  <p>
+    A Câmara Germicida é o retorno consciente ao caminho direto, feito por quem já explorou o
+    atalho e entende por que ele não fecha.
+  </p>
+</section>
+
+<section class="block">
+  <h2>Registro e validação</h2>
+  <p>
+    Os testes foram conduzidos pela <strong>Professora Clarice Arns e suas colaboradoras</strong>,
+    no Laboratório de Virologia Animal da Unicamp — um dos poucos pontos da universidade que
+    seguiram abertos durante o <i>lockdown</i>. Levei o protótipo; o experimento é deles.
+  </p>
+  <ul class="refs">
+    <li><b>TV Record Campinas</b> · 22 de maio de 2020 · reportagem de Luiz Crescenzo ·
+      <a href="https://www.youtube.com/watch?v=vWIRtm6stqg" target="_blank" rel="noopener" style="color:var(--laser)">assistir</a></li>
+    <li><b>TV Cultura, Jornal da Tarde</b> · 28 de maio de 2020 · a partir de 1min52 ·
+      <a href="https://youtu.be/8HYsHcVTbGY" target="_blank" rel="noopener" style="color:var(--laser)">assistir</a></li>
+    <li><b>Kowalski, W.</b> <i>Ultraviolet Germicidal Irradiation Handbook</i>. Springer, 2009.</li>
+  </ul>
+  <div class="status">
+    <h3>Contato</h3>
+    <p>
+      Consultoria em UVGI e desinfecção por ultravioleta:
+      <a href="mailto:stasiak@ledslife.com.br" style="color:var(--laser)">stasiak@ledslife.com.br</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <span>Fabio Stasiak · <a href="/">arquivo LedsLife</a> · Campinas, SP</span>
+  <span>FEEC · Unicamp</span>
+</footer>
+
+</div>
+</body>
+</html>
